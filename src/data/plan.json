@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Speed Intervals",
+    "description": "8 x 400m intervals with 200m recovery jog between each",
+    "duration": "40 min",
+    "completed": true
+  },
+  {
+    "title": "Rest Day",
+    "description": "Active recovery or complete rest",
+    "duration": "0 min",
+    "completed": true
+  },
+  {
+    "title": "Easy Run",
+    "description": "Relaxed pace, focus on form and breathing",
+    "duration": "30 min",
+    "completed": false,
+    "current": true
+  },
+  {
+    "title": "Tempo Run",
+    "description": "15 min easy, 20 min at threshold pace, 10 min easy",
+    "duration": "45 min",
+    "completed": false
+  },
+  {
+    "title": "Rest Day",
+    "description": "Focus on stretching and mobility",
+    "duration": "0 min",
+    "completed": false
+  },
+  {
+    "title": "Long Run",
+    "description": "Steady conversational pace throughout",
+    "duration": "70 min",
+    "completed": false
+  },
+  {
+    "title": "Recovery Run",
+    "description": "Very easy effort to promote recovery",
+    "duration": "25 min",
+    "completed": false
+  }
+]
