@@ -1,0 +1,269 @@
+[33mcommit a2d68e0aee7f86a94afc64751095f27180233752[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdemoversion[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/demoversion[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Cindy Bruikman <cbruikman@gmail.com>
+Date:   Mon May 12 19:33:42 2025 +0200
+
+    Update README.md
+
+[33mcommit 02a46da2013c00d15fca3223d2579cbc53f04eb5[m
+Author: Cindy Bruikman <cbruikman@gmail.com>
+Date:   Mon May 12 19:27:40 2025 +0200
+
+    Update README.md
+
+[33mcommit c5d57efaee684670ca9c962d698d1aec2c1c3856[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Mon May 12 19:25:14 2025 +0200
+
+    Add Readme image
+
+[33mcommit 72384dffb2531d4680779d74fd8918b54b7b06c5[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Mon May 12 19:22:28 2025 +0200
+
+    Add Readme image
+
+[33mcommit 73b8f4bdd834a11bf9905e4d36eb94bdd465a6dc[m
+Author: Cindy Bruikman <cbruikman@gmail.com>
+Date:   Mon May 12 19:13:07 2025 +0200
+
+    Update README.md
+
+[33mcommit e2ac6c9ba733db5f2efcbf564f0d7b1e79949490[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 22:27:12 2025 +0200
+
+    Fix Generate plan
+
+[33mcommit 5389f8d8aa20091c43ca515161c28c19095e92e6[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 22:18:45 2025 +0200
+
+    Fix Generate plan
+
+[33mcommit f9407551ee185f97c19a018c7592c780a372e0d4[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 22:03:24 2025 +0200
+
+    Fixing the plan site client side error
+
+[33mcommit 786fd2910e7836003a2c35b955eb2d8d31759a17[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 21:58:26 2025 +0200
+
+    Fixing the plan site client side error
+
+[33mcommit 79f790118b9716c11fb12a0db8489da37a83fea5[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 21:57:08 2025 +0200
+
+    Extern working site
+
+[33mcommit 6cb3c85f1bfa16616cd9f7ed9d8b28c8cc1cf79b[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sun May 11 20:58:02 2025 +0200
+
+    Local fix for logging in
+
+[33mcommit e5b0c4ee9bd077658388e50f54592d6af49ad29e[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sat May 10 15:56:46 2025 +0200
+
+    Update API endpoint to use production URL
+    
+    Replaced development API URL with the live production endpoint to ensure correct data fetching in deployed environment.
+
+[33mcommit 3aaa9a062577e13bedc9e4c8bba2d70fb3a12eaf[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sat May 10 15:35:09 2025 +0200
+
+    Load activities using real data from API
+    
+    Replaced mock data with live API responses to display actual user activities dynamically in the application.
+
+[33mcommit 0ab288dc940ba59fd0746b4bcbbb1de168825286[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sat May 10 12:27:11 2025 +0200
+
+    Fix: add prisma generate for Vercel
+
+[33mcommit 6e8542d106a406c57cc1b00125c43ef3b96336ac[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Sat May 10 12:09:03 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit ea4c55960c2d820cf2b9ba5846ac0276d1d907c2[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:56:47 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 79743b11d3453d13df13cfd8256b602cda5df717[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:50:29 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 19c9e713ca5c9084a817300eb4fd57f918625813[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:47:42 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 38e7b3c0f66591ee8df65a4fd356cebce5d0f1d5[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:41:55 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit f5be892f5cb46342f43c065ce103276e1ed4ff9b[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:39:39 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 361c88016cc8821b5e6c983775731f620f501352[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:37:42 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit d8fbd2deb23684a6eec7410aba525340150eb9c3[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:35:21 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 29121137e9c7dde23599c16f838e975d6c8f56d8[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:32:20 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 59f8c655e0d988e540ca4170476cf164f0b190ee[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:30:43 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 5f478116b51e3236d24f746c418b72cc547bbba5[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:28:12 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit f22a9861a9bb3f9e08813e17bfb3c4d3bfafb9a2[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:23:19 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 3c95d222404a8da9beceb484736a82cc7f4c77e0[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:20:30 2025 +0200
+
+    Attempt to fix and test production error
+    
+    Investigated and applied potential fix for issue occurring in production. Added temporary logs and ran tests to validate behavior under production-like conditions.
+
+[33mcommit 1f06a8d05082c06aea403c67fa80d56457b16b69[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri May 9 14:13:17 2025 +0200
+
+    Integrate Strava API and enable AI-based plan generation
+    
+    Set up connection with Strava API for activity data and implemented initial logic to generate personalized training plans using AI.
+
+[33mcommit 2536e9d389b93dc90b6401b43d040f8eaa3f921e[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Thu May 8 13:45:10 2025 +0200
+
+    Update primary color to correct value
+    
+    Replaced incorrect primary color with the intended design color across global styles and relevant components.
+
+[33mcommit c822cfc7f0c3df714316298245fee9086388435e[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Thu May 8 13:31:22 2025 +0200
+
+    Fix styling issues across multiple components
+    
+    Resolved layout and visual inconsistencies in various UI components to restore intended design and responsiveness.
+
+[33mcommit d723b8a11d1057eeb88178774e17d295f41c577b[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 11:40:23 2025 +0200
+
+    Fix 404 page for Next.js
+
+[33mcommit 62960602b9f00dbffff61caa93bd4f6fa4745190[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 10:33:59 2025 +0200
+
+    Fix TS import extension issue
+
+[33mcommit 2e97d9db3a562b8be8ff8f1e7e146702eac975ee[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 10:30:12 2025 +0200
+
+    Ignore ESLint during Vercel build
+
+[33mcommit 3b2c6aa8304cbe24669af7ffd79b4dffd67b5074[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 10:02:21 2025 +0200
+
+    Fix postcss config path for Vercel
+
+[33mcommit e363790695933bc990f51726995ef3f31458a7ae[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 09:59:55 2025 +0200
+
+    Fix postcss config path for Vercel
+
+[33mcommit 154db5978a199fd1e01c6a7b13bf942db48789e8[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 09:59:14 2025 +0200
+
+    Fix postcss config path for Vercel
+
+[33mcommit b76282da9909a6f7e02e7b76a2961db78137cddf[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 09:50:40 2025 +0200
+
+    Test run
+
+[33mcommit 7cc9ede8664af43674af56fbc89e7dbcc232ca1c[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 09:18:16 2025 +0200
+
+    Initial commit for clean Next.js project
+
+[33mcommit 5e9a072860ffd2587da8ce76ce1aba26ad95f718[m
+Author: cindybruikman <97453679+cindybruikman@users.noreply.github.com>
+Date:   Fri Apr 25 09:06:40 2025 +0200
+
+    Initial commit from Create Next App
