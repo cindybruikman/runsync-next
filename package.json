@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "postcss": "./postcss.config.clean.cjs",
+"postcss": "./postcss.config.cjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
