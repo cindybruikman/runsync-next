@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -11,7 +11,7 @@ export default function NotFound() {
       <div className="text-center max-w-md">
         <div className="flex justify-center mb-6">
           <img
-            src="/lovable-uploads/11041176-ae4f-4ce9-bbf8-48f5dc597931.png"
+            src="/img/logo-runsync-dark-horizontal.png"
             alt="RunSync Logo"
             className="h-16"
           />

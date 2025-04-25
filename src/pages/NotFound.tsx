@@ -1,26 +1,20 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+// src/app/not-found.tsx (voor App Router in Next.js 13+)
+
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4">
       <div className="text-center max-w-md">
         <div className="flex justify-center mb-6">
-          <img 
-            src="/lovable-uploads/11041176-ae4f-4ce9-bbf8-48f5dc597931.png" 
-            alt="RunSync Logo" 
-            className="h-16" 
+          <Image 
+            src="/img/logo-runsync-dark-horizontal.png"
+            alt="RunSync Logo"
+            width={200}
+            height={64}
+            className="h-16 w-auto"
           />
         </div>
         <h1 className="text-6xl font-bold mb-4 text-primary dark:text-white">404</h1>
@@ -28,7 +22,7 @@ const NotFound = () => {
         <p className="text-gray-500 dark:text-gray-400 mb-8">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <Link to="/">
+        <Link href="/" passHref>
           <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
             Back to Home
           </Button>
