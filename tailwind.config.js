@@ -34,7 +34,7 @@ module.exports = {
 			foreground: "#0c1725",
 		  },
 		  accent: {
-			DEFAULT: "#6EDC5F",
+			DEFAULT: "#ABD904",
 			foreground: "#0c1725",
 		  },
 		  destructive: {

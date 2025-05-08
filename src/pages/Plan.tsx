@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import GeneratePlanModal from "@/components/Plan/GeneratePlanModal";
 import staticPlan from "@/data/plan.json";
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
 
 const Plan = () => {
   const [plan, setPlan] = useState(staticPlan);
@@ -19,7 +27,9 @@ const Plan = () => {
   // Huidige weeknummer bepalen vanaf startdatum (bijv. 3 weken geleden)
   const getWeekNumber = (startDate: Date) => {
     const now = new Date();
-    const diffInDays = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+    const diffInDays = Math.floor(
+      (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
     return Math.min(Math.floor(diffInDays / 7) + 1, totalWeeks);
   };
 
@@ -44,13 +54,23 @@ const Plan = () => {
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-8">
-          <h2 className="text-xl font-semibold mb-4">Current Goal: {currentGoal}</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Current Goal: {currentGoal}
+          </h2>
           <div className="mb-2 flex justify-between text-sm">
-            <span>Week {week} of {totalWeeks}</span>
+            <span>
+              Week {week} of {totalWeeks}
+            </span>
             <span>{percent}% Complete</span>
           </div>
-          <Progress value={percent} className="h-2 bg-gray-100 dark:bg-gray-700">
-            <div className="h-full bg-accent rounded-full" style={{ width: `${percent}%` }}></div>
+          <Progress
+            value={percent}
+            className="h-2 bg-gray-100 dark:bg-gray-700"
+          >
+            <div
+              className="h-full bg-accent rounded-full"
+              style={{ width: `${percent}%` }}
+            ></div>
           </Progress>
         </div>
 
@@ -64,11 +84,13 @@ const Plan = () => {
             return (
               <div
                 key={day}
-                className={`rounded-xl p-4 border-2 ${isToday
-                  ? "border-accent bg-accent/5"
-                  : workout?.completed
-                  ? "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50"
-                  : "border-gray-200 dark:border-gray-700"}`}
+                className={`rounded-xl p-4 border-2 ${
+                  isToday
+                    ? "border-accent bg-accent/5"
+                    : workout?.completed
+                    ? "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50"
+                    : "border-gray-200 dark:border-gray-700"
+                }`}
               >
                 <div className="flex justify-between items-center mb-3">
                   <span className="font-medium">{day}</span>
@@ -84,14 +106,18 @@ const Plan = () => {
                   )}
                 </div>
 
-                <h3 className="font-semibold mb-2">{workout?.title || "Rest"}</h3>
+                <h3 className="font-semibold mb-2">
+                  {workout?.title || "Rest"}
+                </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   {workout?.description || "No scheduled workout."}
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
-                    {workout?.duration || "0 min"}
-                  </span>
+                  {workout?.duration && workout.duration !== "0 min" && (
+                    <span className="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                      {workout.duration}
+                    </span>
+                  )}
                 </div>
               </div>
             );
