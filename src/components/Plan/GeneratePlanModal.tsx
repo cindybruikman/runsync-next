@@ -1,66 +1,104 @@
-'use client';
+"use client";
 
+import { useState } from "react";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
-import { Button } from '@/components/ui/button';
+const GeneratePlanModal = () => {
+  const [distance, setDistance] = useState("5K");
+  const [weeks, setWeeks] = useState(6);
+  const [level, setLevel] = useState("Beginner");
+  const [loading, setLoading] = useState(false);
 
-export default function GeneratePlanModal() {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const payload = { distance, weeks, level };
+    console.log("Sending to GPT:", payload);
+
+    try {
+      const res = await fetch("/api/generate-plan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch generated plan.");
+      }
+
+      const generatedPlan = await res.json();
+      console.log("Generated plan:", generatedPlan);
+
+      // TODO: update plan state or pass to parent component
+    } catch (error) {
+      console.error("Error generating plan:", error);
+    }
+
+    setLoading(false);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-          Generate New Plan
-        </Button>
+        <Button variant="outline">Generate New Plan</Button>
       </DialogTrigger>
-
-      <DialogContent className="max-w-md">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Genereer nieuw trainingsschema</DialogTitle>
-          <DialogDescription>
-            Vul de velden in en ontvang een gepersonaliseerd plan.
-          </DialogDescription>
+          <DialogTitle>Generate a Custom Plan</DialogTitle>
         </DialogHeader>
-
-        <form className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div>
-            <label className="block text-sm font-medium">Doelafstand (bijv. 10 km)</label>
+            <label className="block mb-1 font-medium">Target Distance</label>
             <input
               type="text"
-              placeholder="10"
-              className="w-full mt-1 px-3 py-2 border rounded-md bg-background"
+              value={distance}
+              onChange={(e) => setDistance(e.target.value)}
+              className="w-full px-3 py-2 border rounded-md bg-white text-black dark:bg-gray-800 dark:text-white"
+              required
             />
           </div>
-
           <div>
-            <label className="block text-sm font-medium">Aantal weken</label>
+            <label className="block mb-1 font-medium">Number of Weeks</label>
             <input
               type="number"
-              placeholder="6"
-              className="w-full mt-1 px-3 py-2 border rounded-md bg-background"
+              value={weeks}
+              onChange={(e) => setWeeks(parseInt(e.target.value))}
+              min={1}
+              max={16}
+              className="w-full px-3 py-2 border rounded-md bg-white text-black dark:bg-gray-800 dark:text-white"
+              required
             />
           </div>
-
           <div>
-            <label className="block text-sm font-medium">Niveau</label>
-            <select className="w-full mt-1 px-3 py-2 border rounded-md bg-background">
-              <option>Beginner</option>
-              <option>Gemiddeld</option>
-              <option>Gevorderd</option>
+            <label className="block mb-1 font-medium">Experience Level</label>
+            <select
+              value={level}
+              onChange={(e) => setLevel(e.target.value)}
+              className="w-full px-3 py-2 border rounded-md bg-white text-black dark:bg-gray-800 dark:text-white"
+              required
+            >
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
             </select>
           </div>
-
-          <Button type="submit" className="w-full mt-4">
-            Genereer plan
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? "Generating..." : "Generate New Plan"}
           </Button>
         </form>
       </DialogContent>
     </Dialog>
   );
-}
+};
+
+export default GeneratePlanModal;

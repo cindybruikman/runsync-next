@@ -1,45 +1,57 @@
 [
   {
+    "goalName": "5K Improvement",
+    "targetTime": "22:30",
+    "totalWeeks": 8,
+    "startDate": "2024-04-15"
+  },
+  {
     "title": "Speed Intervals",
     "description": "8 x 400m intervals with 200m recovery jog between each",
     "duration": "40 min",
-    "completed": true
+    "completed": false,
+    "week": 1
   },
   {
     "title": "Rest Day",
     "description": "Active recovery or complete rest",
     "duration": "0 min",
-    "completed": true
+    "completed": false,
+    "week": 1
   },
   {
     "title": "Easy Run",
     "description": "Relaxed pace, focus on form and breathing",
     "duration": "30 min",
     "completed": false,
-    "current": true
+    "week": 1
   },
   {
     "title": "Tempo Run",
     "description": "15 min easy, 20 min at threshold pace, 10 min easy",
     "duration": "45 min",
-    "completed": false
+    "completed": false,
+    "week": 1
   },
   {
     "title": "Rest Day",
     "description": "Focus on stretching and mobility",
     "duration": "0 min",
-    "completed": false
+    "completed": false,
+    "week": 1
   },
   {
     "title": "Long Run",
     "description": "Steady conversational pace throughout",
     "duration": "70 min",
-    "completed": false
+    "completed": false,
+    "week": 1
   },
   {
     "title": "Recovery Run",
     "description": "Very easy effort to promote recovery",
     "duration": "25 min",
-    "completed": false
+    "completed": false,
+    "week": 1
   }
 ]
