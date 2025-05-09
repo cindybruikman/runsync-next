@@ -13,7 +13,6 @@ export default function StravaProvider(
   return {
     id: "strava",
     name: "Strava",
-    type: "oauth",
     authorization: {
       url: "https://www.strava.com/oauth/authorize",
       params: {
@@ -31,18 +30,15 @@ export default function StravaProvider(
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams({
-            client_id: options.clientId,
-            client_secret: options.clientSecret,
+            client_id: String(options.clientId),
+            client_secret: String(options.clientSecret),
             grant_type: "authorization_code",
             code: params.code,
           }),
         });
 
         const data = await res.json();
-
-        // Verwijder 'athlete' om Prisma errors te voorkomen
         const { athlete, ...tokens } = data;
-
         return { tokens };
       },
     },
@@ -51,7 +47,7 @@ export default function StravaProvider(
       return {
         id: profile.id.toString(),
         name: `${profile.firstname} ${profile.lastname}`,
-        email: `${profile.id}@strava.local`, // Strava geeft geen echte email
+        email: `${profile.id}@strava.local`,
         image: profile.profile,
       };
     },
