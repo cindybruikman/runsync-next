@@ -1,4 +1,4 @@
-import type { OAuthConfig, OAuthUserConfig } from "@auth/core/providers";
+import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers";
 
 interface StravaProfile {
   id: number;
@@ -31,21 +31,19 @@ export default function StravaProvider(
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams({
-            client_id: String(options.clientId),
-            client_secret: String(options.clientSecret),
+            client_id: options.clientId,
+            client_secret: options.clientSecret,
             grant_type: "authorization_code",
-            code: String(params.code),
+            code: params.code,
           }),
         });
 
         const data = await res.json();
 
-        // 🔥 Verwijder 'athlete' zodat Prisma geen fout krijgt
-        const { athlete, ...stripped } = data;
+        // Verwijder 'athlete' om Prisma errors te voorkomen
+        const { athlete, ...tokens } = data;
 
-        return {
-          tokens: stripped,
-        };
+        return { tokens };
       },
     },
     userinfo: "https://www.strava.com/api/v3/athlete",
@@ -53,7 +51,7 @@ export default function StravaProvider(
       return {
         id: profile.id.toString(),
         name: `${profile.firstname} ${profile.lastname}`,
-        email: `${profile.id}@strava.local`,
+        email: `${profile.id}@strava.local`, // Strava geeft geen echte email
         image: profile.profile,
       };
     },
