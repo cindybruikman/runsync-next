@@ -1,6 +1,5 @@
 import type { OAuthConfig, OAuthUserConfig } from "@auth/core/providers";
 
-
 interface StravaProfile {
   id: number;
   firstname: string;
@@ -25,7 +24,7 @@ export default function StravaProvider(
     },
     token: {
       url: "https://www.strava.com/oauth/token",
-      async request({ params }) {
+      async request({ params }: { params: { code: string } }) {
         const res = await fetch("https://www.strava.com/oauth/token", {
           method: "POST",
           headers: {
