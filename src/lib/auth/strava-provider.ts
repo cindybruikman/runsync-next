@@ -1,4 +1,5 @@
-import type { OAuthConfig, OAuthUserConfig } from "next-auth";
+import type { OAuthConfig, OAuthUserConfig } from "@auth/core/providers";
+
 
 interface StravaProfile {
   id: number;
