@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import GeneratePlanModal from "@/components/Plan/GeneratePlanModal";
-import staticPlan from "@/data/plan.json";
 
 const days = [
   "Monday",
@@ -18,7 +17,16 @@ const days = [
 ];
 
 const Plan = () => {
-  const [plan, setPlan] = useState(staticPlan);
+  const [plan, setPlan] = useState([]);
+
+  useEffect(() => {
+    const fetchPlan = async () => {
+      const res = await fetch("/api/plan");
+      const data = await res.json();
+      setPlan(data);
+    };
+    fetchPlan();
+  }, []);
 
   // Dynamische metadata (mock, vervang later met context of echte data)
   const currentGoal = "5K in 22:30";
@@ -35,6 +43,8 @@ const Plan = () => {
 
   const week = getWeekNumber(new Date("2024-04-15"));
   const percent = Math.round((week / totalWeeks) * 100);
+
+  console.log("PLAN:", plan);
 
   return (
     <Layout>
@@ -76,10 +86,20 @@ const Plan = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-8">
           {days.map((day, index) => {
-            const workout = plan[index];
+            const workoutIndex = (week - 1) * 7 + index;
+            const workout = plan[workoutIndex];
             const today = new Date();
-            const todayIndex = (today.getDay() + 6) % 7;
+            const todayIndex = (today.getDay() + 6) % 7; // maandag = 0
             const isToday = index === todayIndex;
+
+            const fallbackWorkout = {
+              title: "Rest",
+              description: "No workout scheduled.",
+              duration: "",
+              completed: false,
+            };
+
+            const finalWorkout = workout || fallbackWorkout;
 
             return (
               <div
@@ -122,6 +142,43 @@ const Plan = () => {
               </div>
             );
           })}
+        </div>
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6">Volledig trainingsschema</h2>
+          <div className="space-y-10">
+            {Array.from(
+              { length: Math.ceil(plan.length / 7) },
+              (_, weekIndex) => {
+                const weekPlan = plan.slice(weekIndex * 7, (weekIndex + 1) * 7);
+                return (
+                  <div key={weekIndex}>
+                    <h3 className="text-xl font-semibold mb-4">
+                      Week {weekIndex + 1}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                      {weekPlan.map((workout, i) => (
+                        <div
+                          key={i}
+                          className="p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-sm"
+                        >
+                          <h4 className="font-medium mb-1">{days[i % 7]}</h4>
+                          <p className="text-sm text-gray-800 dark:text-gray-100 font-semibold">
+                            {workout.title}
+                          </p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            {workout.description}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-2">
+                            {workout.duration}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+            )}
+          </div>
         </div>
       </div>
     </Layout>
