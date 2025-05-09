@@ -57,6 +57,5 @@ export default function StravaProvider(
         image: profile.profile,
       };
     },
-    options,
   };
 }
