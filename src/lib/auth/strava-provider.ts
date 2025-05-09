@@ -31,10 +31,10 @@ export default function StravaProvider(
             "Content-Type": "application/x-www-form-urlencoded",
           },
           body: new URLSearchParams({
-            client_id: options.clientId,
-            client_secret: options.clientSecret,
+            client_id: String(options.clientId),
+            client_secret: String(options.clientSecret),
             grant_type: "authorization_code",
-            code: params.code!,
+            code: String(params.code),
           }),
         });
 
