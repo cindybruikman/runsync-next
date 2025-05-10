@@ -20,6 +20,7 @@ const StravaProvider = (
       scope: "read,activity:read",
       response_type: "code",
       approval_prompt: "auto",
+      redirect_uri: process.env.STRAVA_REDIRECT_URI,
     },
   },
   token: {
