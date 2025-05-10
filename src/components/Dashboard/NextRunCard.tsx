@@ -29,7 +29,7 @@ const NextRunCard = () => {
       
       <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg mb-6">
         <p className="text-sm text-gray-600 dark:text-gray-300">
-          Focus on easy effort after yesterday's hard workout. Keep your heart rate below 150 bpm and enjoy the recovery.
+          Focus on easy effort after yesterdays hard workout. Keep your heart rate below 150 bpm and enjoy the recovery.
         </p>
       </div>
       

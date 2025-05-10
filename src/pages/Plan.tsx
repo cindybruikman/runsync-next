@@ -16,8 +16,15 @@ const days = [
   "Sunday",
 ];
 
+type Workout = {
+  title: string;
+  description: string;
+  duration: string;
+  completed: boolean;
+};
+
 const Plan = () => {
-  const [plan, setPlan] = useState([]);
+  const [plan, setPlan] = useState<Workout[]>([]);
 
   useEffect(() => {
     const fetchPlan = async () => {
@@ -92,14 +99,14 @@ const Plan = () => {
             const todayIndex = (today.getDay() + 6) % 7; // maandag = 0
             const isToday = index === todayIndex;
 
-            const fallbackWorkout = {
-              title: "Rest",
-              description: "No workout scheduled.",
-              duration: "",
-              completed: false,
-            };
+            // const fallbackWorkout = {
+            //   title: "Rest",
+            //   description: "No workout scheduled.",
+            //   duration: "",
+            //   completed: false,
+            // };
 
-            const finalWorkout = workout || fallbackWorkout;
+            // const finalWorkout = workout || fallbackWorkout;
 
             return (
               <div

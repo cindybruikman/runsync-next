@@ -1,4 +1,6 @@
-import NextAuth from "next-auth";
+// next-auth.d.ts
+
+import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
   interface Session {
@@ -6,8 +8,8 @@ declare module "next-auth" {
       name?: string | null;
       email?: string | null;
       image?: string | null;
-      stravaId?: string;
-      accessToken?: string;
+      stravaId?: string | null;  // Voeg de stravaId hier toe
+      accessToken?: string | null;
     };
   }
 

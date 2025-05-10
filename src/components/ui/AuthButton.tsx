@@ -1,10 +1,12 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
-import { Button } from "@/components/ui/button"; // Als je ShadCN of je eigen Button gebruikt
+import { Button } from "@/components/ui/button";
 
 export function AuthButton({ className }: { className?: string }) {
-  const { data: session, status } = useSession();
+  const sessionData = useSession();
+  const session = sessionData?.data;
+  const status = sessionData?.status;
 
   if (status === "loading") {
     return (

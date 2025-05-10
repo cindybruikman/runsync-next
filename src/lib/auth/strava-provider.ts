@@ -1,4 +1,4 @@
-import type { OAuthConfig, OAuthUserConfig } from "next-auth";
+import type { OAuthConfig } from "next-auth/providers";
 
 interface StravaProfile {
   id: number;
@@ -7,12 +7,14 @@ interface StravaProfile {
   profile: string;
 }
 
-export default function StravaProvider(
-  options: OAuthUserConfig<StravaProfile>
-): OAuthConfig<StravaProfile> {
+export default function StravaProvider(options: {
+  clientId: string;
+  clientSecret: string;
+}): OAuthConfig<StravaProfile> {
   return {
     id: "strava",
     name: "Strava",
+    type: "oauth",
     authorization: {
       url: "https://www.strava.com/oauth/authorize",
       params: {
@@ -23,22 +25,22 @@ export default function StravaProvider(
     },
     token: {
       url: "https://www.strava.com/oauth/token",
-      async request({ params }: { params: { code: string } }) {
+      async request({ params }) {
         const res = await fetch("https://www.strava.com/oauth/token", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams({
-            client_id: String(options.clientId),
-            client_secret: String(options.clientSecret),
+            client_id: options.clientId,
+            client_secret: options.clientSecret,
             grant_type: "authorization_code",
-            code: params.code,
+            code: String(params.code), // ✅ geforceerd naar string
           }),
         });
 
         const data = await res.json();
-        const { athlete, ...tokens } = data;
+
+        const { athlete, ...tokens } = data; // strip athlete if Prisma complains
+
         return { tokens };
       },
     },
