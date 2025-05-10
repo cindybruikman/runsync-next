@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -6,15 +7,38 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import activities from "@/data/activities.json";
 
-const sortedRuns = [...activities].sort((a, b) => {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
-});
-
-const recentRuns = sortedRuns.slice(0, 4);
+interface Activity {
+  id: string;
+  name: string;
+  distance: number;
+  moving_time: number;
+  start_date: string;
+  type: string;
+}
 
 const RecentRunsTable = () => {
+  const [runs, setRuns] = useState<Activity[]>([]);
+
+  useEffect(() => {
+    const fetchRuns = async () => {
+      const res = await fetch("/api/strava/activities");
+      const allActivities = await res.json();
+
+      const runsOnly = allActivities
+        .filter((act: Activity) => act.type === "Run")
+        .sort(
+          (a: Activity, b: Activity) =>
+            new Date(b.start_date).getTime() - new Date(a.start_date).getTime()
+        )
+        .slice(0, 4);
+
+      setRuns(runsOnly);
+    };
+
+    fetchRuns();
+  }, []);
+
   return (
     <div className="rounded-lg border shadow-sm overflow-hidden">
       <Table>
@@ -25,31 +49,22 @@ const RecentRunsTable = () => {
             <TableHead>Distance (km)</TableHead>
             <TableHead>Duration</TableHead>
             <TableHead>Pace (/km)</TableHead>
-            {/* <TableHead>Effort</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {recentRuns.map((run) => (
-            <TableRow
-              key={run.id}
-              className="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
-            >
-              <TableCell>{run.date}</TableCell>
-              <TableCell>{run.title}</TableCell>
-              <TableCell>{run.distance}</TableCell>
-              <TableCell>{run.duration}</TableCell>
-              <TableCell>{run.pace}</TableCell>
-              {/* <TableCell>
-                <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${
-                  run.effort === 'Easy' 
-                    ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' 
-                    : run.effort === 'Moderate'
-                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' 
-                    : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
-                }`}>
-                  {run.effort}
-                </span>
-              </TableCell> */}
+          {runs.map((run) => (
+            <TableRow key={run.id}>
+              <TableCell>{new Date(run.start_date).toLocaleDateString()}</TableCell>
+              <TableCell>{run.name}</TableCell>
+              <TableCell>{(run.distance / 1000).toFixed(2)}</TableCell>
+              <TableCell>{Math.round(run.moving_time / 60)} min</TableCell>
+              <TableCell>
+                {(
+                  (run.moving_time / 60) /
+                  (run.distance / 1000)
+                ).toFixed(1)}{" "}
+                min/km
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

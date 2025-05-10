@@ -94,7 +94,13 @@ const Plan = () => {
         <div className="grid grid-cols-1 md:grid-cols-7 gap-4 mb-8">
           {days.map((day, index) => {
             const workoutIndex = (week - 1) * 7 + index;
-            const workout = plan[workoutIndex];
+            const workout = plan[workoutIndex] ?? {
+              title: "Rest",
+              description: "No workout scheduled.",
+              duration: "",
+              completed: false,
+            };
+
             const today = new Date();
             const todayIndex = (today.getDay() + 6) % 7; // maandag = 0
             const isToday = index === todayIndex;
@@ -163,23 +169,32 @@ const Plan = () => {
                       Week {weekIndex + 1}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                      {weekPlan.map((workout, i) => (
-                        <div
-                          key={i}
-                          className="p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-sm"
-                        >
-                          <h4 className="font-medium mb-1">{days[i % 7]}</h4>
-                          <p className="text-sm text-gray-800 dark:text-gray-100 font-semibold">
-                            {workout.title}
-                          </p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            {workout.description}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-2">
-                            {workout.duration}
-                          </p>
-                        </div>
-                      ))}
+                      {weekPlan.map((workout, i) => {
+                        const safeWorkout = workout ?? {
+                          title: "Rest",
+                          description: "No workout scheduled.",
+                          duration: "",
+                          completed: false,
+                        };
+
+                        return (
+                          <div
+                            key={i}
+                            className="p-4 border rounded-lg bg-white dark:bg-gray-800 shadow-sm"
+                          >
+                            <h4 className="font-medium mb-1">{days[i % 7]}</h4>
+                            <p className="text-sm text-gray-800 dark:text-gray-100 font-semibold">
+                              {safeWorkout.title}
+                            </p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                              {safeWorkout.description}
+                            </p>
+                            <p className="text-xs text-gray-500 mt-2">
+                              {safeWorkout.duration}
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );

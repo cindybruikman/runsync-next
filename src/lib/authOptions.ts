@@ -12,15 +12,24 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account, user }) {
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.expiresAt = account.expires_at;
         token.stravaId = account.providerAccountId;
+
+        // ✅ Opslaan van refreshToken in je database
+        if (user?.email?.endsWith("@strava.local") && account.refresh_token) {
+          await prisma.user.update({
+            where: { email: user.email },
+            data: { refreshToken: account.refresh_token },
+          });
+        }
       }
       return token;
     },
+
     async session({ session, token }) {
       if (session.user) {
         session.user.accessToken = token.accessToken as string;
@@ -29,6 +38,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+
   events: {
     async createUser({ user }) {
       if (user.email?.endsWith("@strava.local")) {
@@ -40,7 +50,10 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
+
   session: {
     strategy: "jwt",
   },
 };
+
+console.log("STRAVA_CLIENT_ID", process.env.STRAVA_CLIENT_ID);
