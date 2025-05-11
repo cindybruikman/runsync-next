@@ -163,7 +163,10 @@ const Plan = () => {
               { length: Math.ceil((plan?.length ?? 0) / 7) },
 
               (_, weekIndex) => {
-                const weekPlan = plan.slice(weekIndex * 7, (weekIndex + 1) * 7);
+                const weekPlan = (plan ?? []).slice(
+                  weekIndex * 7,
+                  (weekIndex + 1) * 7
+                );
 
                 return (
                   <div key={weekIndex}>
