@@ -160,9 +160,11 @@ const Plan = () => {
           <h2 className="text-2xl font-bold mb-6">Volledig trainingsschema</h2>
           <div className="space-y-10">
             {Array.from(
-              { length: Math.ceil(plan.length / 7) },
+              { length: Math.ceil((plan?.length ?? 0) / 7) },
+
               (_, weekIndex) => {
                 const weekPlan = plan.slice(weekIndex * 7, (weekIndex + 1) * 7);
+
                 return (
                   <div key={weekIndex}>
                     <h3 className="text-xl font-semibold mb-4">
