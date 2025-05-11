@@ -4,22 +4,24 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/authOptions"; // Zorg ervoor dat je authOptions goed importeert
 import { prisma } from "@/lib/prisma";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
 
-  // Controleer of de sessie en de gebruiker correct zijn ingesteld
   if (!session || !session.user || !session.user.stravaId) {
-    return NextResponse.json([], { status: 200 }); // Geen plan voor anonieme gebruiker
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  // Voer je logica uit met de sessie als de gebruiker is ingelogd
-  const userPlan = await prisma.user.findUnique({
-    where: { stravaId: session.user.stravaId },
-  });
+  try {
+    const plan = await req.json();
 
-  if (!userPlan) {
-    return NextResponse.json([], { status: 200 }); // Geen plan gevonden voor deze gebruiker
+    const updated = await prisma.user.update({
+      where: { stravaId: session.user.stravaId },
+      data: { plan },
+    });
+
+    return NextResponse.json({ success: true, user: updated });
+  } catch (error) {
+    console.error("❌ Error saving plan:", error);
+    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
-
-  return NextResponse.json(userPlan.plan, { status: 200 });
 }
