@@ -8,9 +8,10 @@ interface StravaProfile extends Profile {
   profile: string;
 }
 
-const StravaProvider = (
-  options: { clientId: string; clientSecret: string }
-): OAuthConfig<StravaProfile> => ({
+const StravaProvider = (options: {
+  clientId: string;
+  clientSecret: string;
+}): OAuthConfig<StravaProfile> => ({
   id: "strava",
   name: "Strava",
   type: "oauth",
@@ -20,7 +21,7 @@ const StravaProvider = (
       scope: "read,activity:read",
       response_type: "code",
       approval_prompt: "auto",
-      redirect_uri: process.env.STRAVA_REDIRECT_URI,
+      redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/strava`,
     },
   },
   token: {

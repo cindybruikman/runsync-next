@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import type { NextAuthOptions } from "next-auth";
 import StravaProvider from "@/lib/auth/strava-provider";
 
+console.log("✅ NEXTAUTH_URL:", process.env.NEXTAUTH_URL);
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
