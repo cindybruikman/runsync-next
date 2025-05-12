@@ -1,11 +1,12 @@
 # RunSync
 
-![Vercel](https://img.shields.io/badge/hosted_on-vercel-black?logo=vercel)
-![Next.js](https://img.shields.io/badge/built_with-next.js-black?logo=next.js)
-![TailwindCSS](https://img.shields.io/badge/styled_with-tailwindcss-06b6d4?logo=tailwindcss&logoColor=white)
-![OpenAI](https://img.shields.io/badge/AI_OpenAI-GPT4.0-000000?logo=openai&logoColor=white)
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
-![License](https://img.shields.io/github/license/cindybruikman/runsync-next)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logologoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
@@ -98,12 +99,12 @@ OPENAI_API_KEY=sk-xxxxxx
 
 ## 🛠 Scripts
 
-| Command         | Description                     |
-|----------------|---------------------------------|
-| `npm run dev`  | Start the development server     |
-| `npm run build`| Build the production app         |
-| `npm start`    | Start the production server      |
-| `npm run lint` | Lint the codebase                |
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Build the production app     |
+| `npm start`     | Start the production server  |
+| `npm run lint`  | Lint the codebase            |
 
 ---
 
