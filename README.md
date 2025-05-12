@@ -7,6 +7,8 @@
 ![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logologoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![Neon](https://img.shields.io/badge/Neon-0081F1?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ---
 
@@ -64,6 +66,12 @@ The goal of RunSync is to empower everyday runners with structure and insight �
 - OpenAI GPT (via `/api/generate-plan`)
 - JSON plan structure
 - Custom prompt design for plan creation
+
+### Database
+
+- **Prisma ORM** – type-safe database access
+- **Neon** – serverless Postgres database platform
+
 
 ---
 
