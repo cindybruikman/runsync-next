@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-
 const HeroSection = () => {
   return (
     <div className="relative bg-primary text-white overflow-hidden">
@@ -32,14 +31,20 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="btn-primary">
+            <Button
+              size="lg"
+              className="btn-primary transition-transform duration-200 hover:scale-105 hover:brightness-110"
+            >
               Sync with Strava
             </Button>
+
             <Link href="/dashboard">
               <Button
                 size="lg"
                 variant="outline"
-                className="btn-outline text-white border-white hover:text-primary hover:bg-white"
+                className="btn-outline border border-gray-900 text-gray-900 transition-all duration-200
+             hover:bg-gray-100 hover:scale-105
+             dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary"
               >
                 Explore Dashboard
               </Button>
