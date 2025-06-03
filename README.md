@@ -13,55 +13,30 @@
 
 ---
 
-## 🖼️ Screenshot
-
-![Screenshot van de app](public/img/readme/readme.png)
-
----
-
 ## 🏃 Overview
 
-**RunSync** is a modern running companion web app designed for recreational runners who want to train smarter using real performance data. The application connects with the Strava API and offers weekly planning, progress tracking, and AI-generated training plans tailored to your personal goals.
+**RunSync** is a modern running companion web app designed for recreational runners who want to train smarter using real performance data. The app integrates with the Strava API and uses AI (OpenAI) to generate personalized training plans.
 
 ---
 
-## ✨ Key Features
+## 🔧 Complete Setup Instructions
 
-- **Strava Integration** – Sync your running data with Strava.
-- **Weekly Plan View** – Personalized 7-day overview.
-- **Visual Stats** – Distance, duration, and pace via Chart.js.
-- **AI-Powered Plan Generator** – Custom training plans via OpenAI.
-- **Theme Toggle** – Light/dark mode.
-- **Responsive UI** – Desktop and mobile friendly.
-
----
-
-## 🧱 Tech Stack
-
-**Frontend:** Next.js, React, Tailwind, Chart.js, Strava API  
-**Backend/AI:** Prisma ORM, OpenAI API, PostgreSQL (local or Neon)  
-**Tooling:** VS Code, Node.js, NPM, GitHub, Vercel
-
----
-
-## ⚙️ Installation
-
-### Prerequisites
-
-- Node.js (LTS)
-- PostgreSQL
-
-### Setup
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/cindybruikman/runsync-next.git
 cd runsync-next
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
 ```
 
-### 1. Environment Variables
+### 3. Create Environment File
 
-Create `.env.local` in the project root:
+Create a `.env.local` file in the root directory and add:
 
 ```env
 DATABASE_URL=postgresql://postgres:runsync123@localhost:5432/runsync
@@ -73,33 +48,64 @@ STRAVA_CLIENT_SECRET=your_client_secret
 OPENAI_API_KEY=your_openai_key
 ```
 
-### 2. Create Database
+> ⚠️ Replace all placeholders with your actual credentials. `.env.local` **must be in the root**.
+
+---
+
+### 4. Setup Strava API
+
+1. Go to: https://www.strava.com/settings/api
+2. Fill in:
+   - **Application Name**: RunSync
+   - **Authorization Callback Domain**: `localhost`
+3. After saving, use:
+   - **Client ID** → `STRAVA_CLIENT_ID`
+   - **Client Secret** → `STRAVA_CLIENT_SECRET`
+
+---
+
+### 5. Create Local Database
+
+Ensure PostgreSQL is running locally:
 
 ```bash
 createdb -U postgres runsync
 ```
 
-If database exists already, skip this.
+> Or use: `sudo -u postgres createdb runsync` if needed.
 
-### 3. Apply Migrations
+---
+
+### 6. Run Prisma Migrations
 
 ```bash
 npx prisma migrate dev --name init
 ```
 
-If you get a drift warning, reset:
+If you see drift errors:
 
 ```bash
 npx prisma migrate reset
 ```
 
-### 4. Start App
+---
+
+### 7. Start the App
 
 ```bash
 npm run dev
 ```
 
-Then open: http://localhost:3000
+Then go to [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 8. Login and Use
+
+- Click **Login with Strava**
+- Approve app access
+- Generate your training plan
+- Refresh to see your saved plan
 
 ---
 
@@ -109,11 +115,11 @@ Then open: http://localhost:3000
 | --------------- | ---------------------------- |
 | `npm run dev`   | Start dev server             |
 | `npm run build` | Build for production         |
-| `npm start`     | Start prod server            |
+| `npm start`     | Start production server      |
 | `npm run lint`  | Lint the codebase            |
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT License
