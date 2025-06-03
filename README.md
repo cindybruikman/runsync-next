@@ -73,7 +73,6 @@ The goal of RunSync is to empower everyday runners with structure and insight �
 - **Prisma ORM** – type-safe database access
 - **Neon** – serverless Postgres database platform
 
-
 ---
 
 ## ⚙️ Installation
@@ -82,6 +81,7 @@ The goal of RunSync is to empower everyday runners with structure and insight �
 
 - Node.js (LTS)
 - NPM
+- PostgreSQL (installed locally or via Docker)
 
 ### Setup
 
@@ -98,10 +98,58 @@ Visit: [http://localhost:3000](http://localhost:3000)
 
 ## 🔐 Environment Variables
 
-Create a `.env.local` file:
+Create a `.env.local` file in the root of the project:
 
 ```env
-OPENAI_API_KEY=sk-xxxxxx
+OPENAI_API_KEY=sk-xxxxxxx
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_random_secret_key
+
+STRAVA_CLIENT_ID=your_strava_client_id
+STRAVA_CLIENT_SECRET=your_strava_client_secret
+
+DATABASE_URL=postgresql://postgres:runsync123@localhost:5432/runsync
+```
+
+> Replace `runsync123` with your actual PostgreSQL password if different.
+
+---
+
+## 🧭 Strava API Setup
+
+To connect your app to the Strava API:
+
+1. Go to [https://www.strava.com/settings/api](https://www.strava.com/settings/api)
+2. Register a new application (or edit your existing one).
+3. Use the following values:
+
+| Field                       | Value                  |
+|----------------------------|------------------------|
+| **Website**                | `http://localhost:3000` |
+| **Authorization Callback Domain** | `localhost`           |
+
+> ⚠️ Only put `localhost` in the callback domain field — **no protocol or port**.
+
+---
+
+## 🗃️ Database Setup
+
+1. Create a PostgreSQL database named `runsync`:
+```bash
+createdb runsync
+```
+
+2. Add your `DATABASE_URL` to `.env.local` as shown above.
+
+3. Apply the Prisma schema:
+```bash
+npx prisma migrate dev --name init
+```
+
+4. If needed, regenerate the Prisma Client:
+```bash
+npx prisma generate
 ```
 
 ---
