@@ -23,55 +23,24 @@
 
 **RunSync** is a modern running companion web app designed for recreational runners who want to train smarter using real performance data. The application connects with the Strava API and offers weekly planning, progress tracking, and AI-generated training plans tailored to your personal goals.
 
-Whether you're just starting out or training for a 10K, RunSync helps you structure your runs, track your progress visually, and stay motivated with smart guidance — all in a clean, accessible UI.
-
 ---
 
 ## ✨ Key Features
 
-- **Strava Integration** – Sync your running data with Strava to see real-time activity.
-- **Weekly Plan View** – Personalized 7-day overview with progress indicators and day highlights.
-- **Visual Stats** – Distance, duration, and pace visualized using Chart.js.
-- **AI-Powered Plan Generator** – Create custom plans based on your experience, distance goal, and number of weeks.
-- **Theme Toggle** – Switch between light and dark mode, with adaptive logo.
-- **Responsive UI** – Clean and accessible layout for both desktop and mobile.
-
----
-
-## 🎯 Purpose
-
-The goal of RunSync is to empower everyday runners with structure and insight — without complexity. Using real data, RunSync bridges the gap between training intuition and smart planning by combining user-centered design with AI-driven feedback.
+- **Strava Integration** – Sync your running data with Strava.
+- **Weekly Plan View** – Personalized 7-day overview.
+- **Visual Stats** – Distance, duration, and pace via Chart.js.
+- **AI-Powered Plan Generator** – Custom training plans via OpenAI.
+- **Theme Toggle** – Light/dark mode.
+- **Responsive UI** – Desktop and mobile friendly.
 
 ---
 
 ## 🧱 Tech Stack
 
-### Frontend
-
-- **Next.js** (App Router)
-- **React**
-- **Tailwind CSS**
-- **Chart.js**
-- **Strava API**
-
-### Tooling
-
-- VS Code
-- GitHub & Git
-- Node.js
-- NPM
-- Vercel (hosting)
-
-### AI / Backend
-
-- OpenAI GPT (via `/api/generate-plan`)
-- JSON plan structure
-- Custom prompt design for plan creation
-
-### Database
-
-- **Prisma ORM** – type-safe database access
-- **Neon** – serverless Postgres database platform
+**Frontend:** Next.js, React, Tailwind, Chart.js, Strava API  
+**Backend/AI:** Prisma ORM, OpenAI API, PostgreSQL (local or Neon)  
+**Tooling:** VS Code, Node.js, NPM, GitHub, Vercel
 
 ---
 
@@ -80,8 +49,7 @@ The goal of RunSync is to empower everyday runners with structure and insight �
 ### Prerequisites
 
 - Node.js (LTS)
-- NPM
-- PostgreSQL (installed locally or via Docker)
+- PostgreSQL
 
 ### Setup
 
@@ -89,68 +57,49 @@ The goal of RunSync is to empower everyday runners with structure and insight �
 git clone https://github.com/cindybruikman/runsync-next.git
 cd runsync-next
 npm install
-npm run dev
 ```
 
-Visit: [http://localhost:3000](http://localhost:3000)
+### 1. Environment Variables
 
----
-
-## 🔐 Environment Variables
-
-Create a `.env.local` file in the root of the project:
+Create `.env.local` in the project root:
 
 ```env
-OPENAI_API_KEY=sk-xxxxxxx
-
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_random_secret_key
-
-STRAVA_CLIENT_ID=your_strava_client_id
-STRAVA_CLIENT_SECRET=your_strava_client_secret
-
 DATABASE_URL=postgresql://postgres:runsync123@localhost:5432/runsync
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_here
+
+STRAVA_CLIENT_ID=your_client_id
+STRAVA_CLIENT_SECRET=your_client_secret
+OPENAI_API_KEY=your_openai_key
 ```
 
-> Replace `runsync123` with your actual PostgreSQL password if different.
+### 2. Create Database
 
----
-
-## 🧭 Strava API Setup
-
-To connect your app to the Strava API:
-
-1. Go to [https://www.strava.com/settings/api](https://www.strava.com/settings/api)
-2. Register a new application (or edit your existing one).
-3. Use the following values:
-
-| Field                       | Value                  |
-|----------------------------|------------------------|
-| **Website**                | `http://localhost:3000` |
-| **Authorization Callback Domain** | `localhost`           |
-
-> ⚠️ Only put `localhost` in the callback domain field — **no protocol or port**.
-
----
-
-## 🗃️ Database Setup
-
-1. Create a PostgreSQL database named `runsync`:
 ```bash
-createdb runsync
+createdb -U postgres runsync
 ```
 
-2. Add your `DATABASE_URL` to `.env.local` as shown above.
+If database exists already, skip this.
 
-3. Apply the Prisma schema:
+### 3. Apply Migrations
+
 ```bash
 npx prisma migrate dev --name init
 ```
 
-4. If needed, regenerate the Prisma Client:
+If you get a drift warning, reset:
+
 ```bash
-npx prisma generate
+npx prisma migrate reset
 ```
+
+### 4. Start App
+
+```bash
+npm run dev
+```
+
+Then open: http://localhost:3000
 
 ---
 
@@ -158,16 +107,10 @@ npx prisma generate
 
 | Command         | Description                  |
 | --------------- | ---------------------------- |
-| `npm run dev`   | Start the development server |
-| `npm run build` | Build the production app     |
-| `npm start`     | Start the production server  |
+| `npm run dev`   | Start dev server             |
+| `npm run build` | Build for production         |
+| `npm start`     | Start prod server            |
 | `npm run lint`  | Lint the codebase            |
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For suggestions or improvements, feel free to open an issue or submit a PR.
 
 ---
 
