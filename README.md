@@ -18,6 +18,11 @@
 **RunSync** is a modern running companion web app designed for recreational runners who want to train smarter using real performance data. The app integrates with the Strava API and uses AI (OpenAI) to generate personalized training plans.
 
 ---
+## 🖼️ ScreenshotAdd commentMore actions
+
+![Screenshot van de app](public/img/readme/readme.png)
+
+---
 
 ## 🔧 Complete Setup Instructions
 
